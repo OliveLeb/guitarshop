@@ -50,9 +50,15 @@
         <article class="articleAccueil">
           <figure>
             <img
+              src="./assets/img/{{ article.img }}"
+              [alt]="[article.titre, article.contenu]"
+            />
+            <!--
+               <img
               src="../../../assets/img/{{ article.img }}"
               [alt]="[article.titre, article.contenu]"
             />
+            -->
           </figure>
           <h3>{{ article.titre }}</h3>
           <quill-view
