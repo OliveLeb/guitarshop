@@ -2,11 +2,19 @@
 <div class="content">
   <div class="home" *ngFor="let parametre of param">
     <img
+      src="./assets/banniere/Bannière-Site-guitare.jpg"
+      alt="bannière guitare"
+      title="trouvé sur http://www.letamanoir.com/activites/repetitions/banniere-site-guitare/"
+      class="banniere"
+    />
+    <!--
+      <img
       src="../../../assets/banniere/Bannière-Site-guitare.jpg"
       alt="bannière guitare"
       title="trouvé sur http://www.letamanoir.com/activites/repetitions/banniere-site-guitare/"
       class="banniere"
     />
+    -->
 
     <quill-view
       [content]="parametre.titreAccueil"

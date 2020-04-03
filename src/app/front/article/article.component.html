@@ -4,10 +4,17 @@
     <article class="flex">
       <div class="imgOne">
         <img
+          src="./assets/img/{{ article.img }}"
+          alt="{{ article.titre }} {{ article.contenu }}"
+          class="articleOne"
+        />
+        <!--
+          <img
           src="../../../assets/img/{{ article.img }}"
           alt="{{ article.titre }} {{ article.contenu }}"
           class="articleOne"
         />
+        -->
       </div>
       <div class="right">
         <h1>{{ article.titre }}</h1>
