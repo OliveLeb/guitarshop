@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-lg-2 border-right">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+  <div class="col-lg-10">
+    <h2>Modifier un utilisateur</h2>
+    <div *ngFor="let user of user">
+      <form #f="ngForm" (ngSubmit)="onSubmitUser(f, user._id)">
+        <div class="form-group my-3">
+          <label for="nom">Nom</label>
+          <input
+            type="text"
+            name="nom"
+            class="form-control"
+            [ngModel]="user.nom"
+            required
+          />
+        </div>
+        <div class="from-group my-3">
+          <label for="prenom">Prénom</label>
+          <input
+            type="text"
+            name="prenom"
+            class="form-control"
+            [ngModel]="user.prenom"
+            required
+          />
+        </div>
+        <div class="from-group my-3">
+          <label for="identifiant">Identifiant</label>
+          <input
+            type="text"
+            name="identifiant"
+            class="form-control"
+            [ngModel]="user.identifiant"
+            required
+          />
+        </div>
+        <div class="from-group my-3">
+          <label for="password">Mot de Passe</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            [ngModel]="user.password"
+            required
+          />
+        </div>
+        <div class="from-group my-3">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            [ngModel]="user.email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+          />
+        </div>
+
+        <div class="from-group w-25 my-3">
+          <label for="role">Role</label>
+          <select
+            name="role"
+            class="form-control"
+            [ngModel]="user.role"
+            required
+          >
+            <option *ngFor="let a of roleListe" [value]="a"> {{ a }} </option>
+          </select>
+        </div>
+        <div class="custom-control custom-checkbox my-3">
+          <input
+            type="checkbox"
+            class="custom-control-input actif"
+            name="estActif"
+            #estActif
+            [ngModel]="user.estActif"
+          />
+          <label for="estActif" class="custom-control-label">
+            <span *ngIf="estActif.checked; else estNotChecked">Actif</span>
+            <ng-template #estNotChecked>Inactif</ng-template>
+          </label>
+        </div>
+        <div class="form-inline justify-content-around mt-5">
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+            Modifier
+          </button>
+          <button type="button" class="btn btn-warning" (click)="cancel(f)">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

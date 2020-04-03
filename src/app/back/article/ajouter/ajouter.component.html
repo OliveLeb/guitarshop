@@ -1,0 +1,172 @@
+<div class="row">
+  <div class="col-lg-2 border-right">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+  <div class="col-lg-10">
+    <h2>Ajouter un nouvel article</h2>
+    <form
+      [formGroup]="formCreateArticle"
+      (ngSubmit)="onCreateArticle()"
+      novalidate
+    >
+      <div class="form-group my-3">
+        <label for="titre">Marque</label>
+        <input
+          type="text"
+          formControlName="titre"
+          name="titre"
+          class="form-control"
+          minlength="3"
+          maxlength="30"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contenu">Modèle</label>
+        <quill-editor
+          [style]="quillAddArticle"
+          [modules]="quillConfig"
+          formControlName="contenu"
+        ></quill-editor>
+      </div>
+
+      <div class="form-group my-3">
+        <label for="prix">Prix (€)</label>
+        <input
+          formControlName="prix"
+          name="prix"
+          type="number"
+          class="form-control"
+          min="0"
+          max="10000"
+          required
+        />
+      </div>
+
+      <!-- IMAGE -->
+
+      <div class="form-group my-3">
+        <!--
+    <label class="input-group-btn">
+      <span class="btn btn-primary">
+        Choisir une image
+        <input
+          type="file"
+          id="file"
+          (change)="onFileSelected($event)"
+          multiple
+          accept="image/x-png,image/gif,image/jpeg,image/png"
+          style="display: none;"
+        />
+      </span>
+    </label>
+    <input
+      type="text"
+      class="form-control"
+      readonly
+      [value]="this.image.name"
+    />-->
+        <label for="img">Image</label>
+        <input
+          formControlName="img"
+          type="text"
+          name="img"
+          class="form-control"
+          required
+        />
+      </div>
+      <!--(click)="onUpload()"-->
+      <!--
+  <button class="btn btn-primary" type="button">
+    Upload
+  </button>-->
+
+      <div formArrayName="categorie">
+        <label for="categorie"
+          >Catégorie
+          <button
+            type="button"
+            class="btn btn-primary ml-3"
+            (click)="addCategorie()"
+          >
+            +
+          </button>
+          <div class="form-group form-inline mx-5">
+            <div
+              *ngFor="let cate of categorie.controls; let i = index"
+              class="my-2"
+            >
+              <select
+                name="categorie"
+                id=""
+                class="form-control"
+                [formControlName]="i"
+              >
+                <option value="" disabled selected>...</option>
+                <option
+                  *ngFor="let cat of categorieArticle"
+                  value="{{ cat }}"
+                  >{{ cat }}</option
+                >
+              </select>
+              <button (click)="removeCategorie(i)" class="btn btn-danger">
+                X
+              </button>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="form-group my-3">
+        <label for="nomAuteur">nomAuteur</label>
+        <input formControlName="nomAuteur" class="form-control" />
+      </div>
+
+      <div class="form-group my-3">
+        <label for="emailAuteur">emailAuteur</label>
+        <input
+          formControlName="emailAuteur"
+          type="email"
+          class="form-control"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        />
+      </div>
+
+      <div class="my-3">
+        <div>
+          Publié :
+          <label for="published" class="switch mt-1">
+            <input
+              type="checkbox"
+              name="published"
+              formControlName="published"
+              class="form-control publication"
+            />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-inline justify-content-around mt-5">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="formCreateArticle.invalid"
+        >
+          Ajouter
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">
+          Annuler
+        </button>
+        <input type="text" class="btn btn-primary" value="Prévisualiser" />
+      </div>
+    </form>
+    <!--<div *ngIf="success" class="alert alert-success" role="alert">
+      Article Créé !
+    </div>-->
+    <!--<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>-->
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="border-top">
+  <h2 class="h4 my-5">Commentaires</h2>
+
+  <div *ngFor="let a of article" class="mt-5">
+    <span (click)="addComment()" class="lien text-muted"
+      >Ajouter un commentaire</span
+    >
+
+    <div *ngIf="showForm" class="mt-4">
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit(a._id)">
+        <div class="form-group col-md-6 p-0">
+          <label for="identifiant">Votre identifiant</label>
+          <input
+            type="text"
+            formControlName="identifiant"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <quill-editor
+            formControlName="contenu"
+            [modules]="quillConfig"
+            theme="snow"
+            required
+          ></quill-editor>
+        </div>
+
+        <button
+          *ngIf="!btn; else updtBtn"
+          type="submit"
+          class="btn btn-info ml-auto"
+        >
+          Valider
+        </button>
+        <ng-template #updtBtn
+          ><button
+            type="button"
+            class="btn btn-info ml-auto"
+            (click)="onUpdate()"
+          >
+            Valideru
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary ml-5"
+            (click)="cancel()"
+          >
+            Annuler
+          </button>
+        </ng-template>
+      </form>
+    </div>
+    <div *ngFor="let b of commentaires" class="my-5">
+      <div *ngIf="a._id === b._idArticle">
+        <div class="row">
+          <div
+            class="card m-auto col-xl-10"
+            (mouseenter)="displayButton = true"
+            (mouseleave)="displayButton = false"
+          >
+            <div class="card-body">
+              <div
+                class="card-title border-bottom d-flex justify-content-between"
+              >
+                <span>{{ b.identifiant }} :</span>
+                <span *ngIf="displayButton"
+                  ><i class="fas fa-pencil-alt" (click)="updateCom(b)"></i>
+                  <i class="fas fa-trash-alt" (click)="deleteCom(b._id)"></i
+                ></span>
+              </div>
+              <quill-view
+                [content]="b.contenu"
+                format="text"
+                theme="snow"
+              ></quill-view>
+            </div>
+
+            <div
+              *ngIf="b.createdAt == b.updatedAt; else updated"
+              class="card-footer blockquote-footer"
+            >
+              <small class="text-muted"
+                >écrit le {{ b.createdAt | date: "dd/MM/y , HH:mm:ss" }}</small
+              >
+            </div>
+            <ng-template #updated>
+              <div class="card-footer blockquote-footer">
+                <small class="text-muted"
+                  >Modifié le
+                  {{ b.updatedAt | date: "dd/MM/y , HH:mm:ss" }}
+                </small>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

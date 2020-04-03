@@ -1,0 +1,8 @@
+li {
+  width: 100%;
+}
+.nav-link {
+  color: #333;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+}

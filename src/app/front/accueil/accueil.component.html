@@ -1,0 +1,77 @@
+<app-nav></app-nav>
+<div class="content">
+  <div class="home" *ngFor="let parametre of param">
+    <img
+      src="../../../assets/banniere/Bannière-Site-guitare.jpg"
+      alt="bannière guitare"
+      title="trouvé sur http://www.letamanoir.com/activites/repetitions/banniere-site-guitare/"
+      class="banniere"
+    />
+
+    <quill-view
+      [content]="parametre.titreAccueil"
+      format="text"
+      theme="snow"
+    ></quill-view>
+    <quill-view [content]="parametre.texteIntro" format="text" theme="snow">
+    </quill-view>
+  </div>
+
+  <section>
+    <h2>Sh<span class="red">o</span>p</h2>
+    <div class="trier">
+      <label for="trie">Trier par :</label>
+      <select name="trie" id="trie" #trie (change)="changeTrie(trie)">
+        <option value="dateajout" selected>Date d'ajout</option>
+        <option value="prixup">Prix croissant</option>
+        <option value="prixdown">Prix décroissant</option>
+      </select>
+    </div>
+
+    <div class="conteneur flex">
+      <div
+        *ngFor="
+          let article of articles
+            | paginate
+              : {
+                  itemsPerPage: nbItems,
+                  currentPage: page
+                }
+        "
+      >
+        <article class="articleAccueil">
+          <figure>
+            <img
+              src="../../../assets/img/{{ article.img }}"
+              [alt]="[article.titre, article.contenu]"
+            />
+          </figure>
+          <h3>{{ article.titre }}</h3>
+          <quill-view
+            class="contenu"
+            [content]="article.contenu"
+            format="text"
+            theme="snow"
+          ></quill-view>
+          <p class="prix">
+            <strong>{{ article.prix }}&nbsp;€</strong>
+          </p>
+
+          <button>
+            <a [routerLink]="['/article', article._id]">Voir</a>
+          </button>
+        </article>
+        <span class="separation"></span>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <pagination-controls
+        (pageChange)="page = $event"
+        autoHide="true"
+        previousLabel=""
+        nextLabel=""
+      ></pagination-controls>
+    </div>
+  </section>
+</div>

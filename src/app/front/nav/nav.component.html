@@ -1,0 +1,47 @@
+<nav class="nav flex">
+  <!--<button class="menu collapsequicknext"><i class="fas fa-bars"></i></button>
+    {{ boutonMenu }}-->
+  <button (click)="onToggle(menu)"><i class="fas fa-bars"></i></button>
+  <ul class="flex niveau1" #menu>
+    <!--
+      <li class="nav-item">
+        <a routerLink="/article">Tout</a>
+      </li>-->
+    <li class="nav-item">
+      <a href="#">Guitare électrique </a>
+      <ul class="niveau2">
+        <li><a href="#">6 cordes</a></li>
+        <li><a href="#">12 cordes</a></li>
+        <li><a href="#">Pour gauchers</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">Guitare acoustique </a>
+      <ul class="niveau2">
+        <li><a href="#">Folk</a></li>
+        <li><a href="#">Classique</a></li>
+        <li><a href="#">Pour gauchers</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">Guitare électro-acoustique </a>
+      <ul class="niveau2">
+        <li><a href="#">6 cordes</a></li>
+        <li><a href="#">12 cordes</a></li>
+        <li><a href="#">Pour gauchers</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">Accessoires </a>
+      <ul class="niveau2">
+        <li><a href="#">Cordes</a></li>
+        <li><a href="#">Amplis</a></li>
+        <li><a href="#">Accordeurs</a></li>
+        <li><a href="#">Mediators</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,121 @@
+<div class="row justify-content-center align-items-center alert alert-primary">
+  <form #formConnexion="ngForm" (ngSubmit)="onConnexion($event, formConnexion)">
+    <h2 class="text-uppercase">authentification</h2>
+
+    <div class="my-5 flex-column">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Identifiant"
+          aria-label="Domaine"
+          aria-describedby="basic-addon2"
+          data-toggle="tooltip"
+          title="Entrez votre identifiant."
+          id="identifiant"
+          name="identifiant"
+          minlength="3"
+          maxlength="50"
+          ngModel
+          #identifiant="ngModel"
+          required
+        />
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2"
+            ><i class="fas fa-user"></i
+          ></span>
+        </div>
+      </div>
+      <div
+        *ngIf="
+          identifiant.invalid && (identifiant.dirty || identifiant.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="identifiant.errors.required">
+          Veuillez entrer votre identifiant .
+        </div>
+        <div *ngIf="identifiant.errors.minlength">
+          L'identifiant doit comporter au moins 3 caractères
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Mot de passe"
+          aria-label="password"
+          aria-describedby="basic-addon2"
+          data-toggle="tooltip"
+          title=" Votre mot de passe doit contenir entre 8-20 caractères, contenir des lettres et des chiffres, aucun espace ni caracères spéciaux."
+          id="password"
+          name="password"
+          minlength="8"
+          maxlength="30"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}"
+          ngModel
+          #password="ngModel"
+          required
+        />
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2"
+            ><i class="fas fa-lock"></i
+          ></span>
+        </div>
+      </div>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="password.errors.required">
+          Veuillez entrer votre mot de passe..
+        </div>
+        <div *ngIf="password.errors.minlength">
+          Le mot de passe doit comporter au moins 8 caractères.
+        </div>
+        <div *ngIf="password.errors.maxlength">
+          Le mot de passe doit comporter 30 caractères max.
+        </div>
+        <div *ngIf="password.errors.pattern">
+          Le mot de passe doit comporter au moins un chiffre, une minuscule, une
+          majuscule et entre 8 et 30 caractères.
+        </div>
+      </div>
+      <small id="passwordHelpBlock" class="form-text text-muted">
+        <a href="/">Mot de passe oublié ?</a>
+      </small>
+    </div>
+
+    <div class="form-group form-check mb-5">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" /> Se souvenir de moi
+      </label>
+    </div>
+    <div class="text-center">
+      {{ formConnexion.value | json }}
+    </div>
+    <!-- (click)="onSubmit()"-->
+    <div class="row justify-content-around">
+      <button
+        type="submit"
+        class="btn btn-primary mb-3"
+        [disabled]="formConnexion.invalid"
+      >
+        Se connecter
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="invalidLogin" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+</div>
+<div>
+  <button class="btn btn-primary mb-3" type="button" (click)="onClose()">
+    Fermer
+  </button>
+  <a routerLink="/admin" class="lien" (click)="onClose()">Go to admin</a>
+</div>

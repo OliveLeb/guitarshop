@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<div class="content flex" *ngFor="let article of article">
+  <section class="flex">
+    <article class="flex">
+      <div class="imgOne">
+        <img
+          src="../../../assets/img/{{ article.img }}"
+          alt="{{ article.titre }} {{ article.contenu }}"
+          class="articleOne"
+        />
+      </div>
+      <div class="right">
+        <h1>{{ article.titre }}</h1>
+        <quill-view
+          [content]="article.contenu"
+          format="text"
+          theme="snow"
+        ></quill-view>
+        <div class="ligne"></div>
+        <p class="prix">{{ article.prix }} &nbsp;€</p>
+      </div>
+    </article>
+    <aside class="flex">
+      <div *ngFor="let b of article.categorie">
+        <table>
+          <tr>
+            {{
+              b
+            }}
+          </tr>
+        </table>
+      </div>
+    </aside>
+  </section>
+  <app-commentaire></app-commentaire>
+</div>

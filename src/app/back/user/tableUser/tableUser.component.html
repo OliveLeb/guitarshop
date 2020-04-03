@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-lg-2 border-right">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+  <div class="col-lg-10">
+    <h2 class="mb-5">Gestion d'utilisateurs</h2>
+
+    <div>
+      <a
+        routerLink="/admin/user/add-user"
+        class="btn btn-primary mb-3"
+        title="Ajouter"
+        ><i class="fas fa-plus"></i
+      ></a>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="text-right">Id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">email</th>
+          <th scope="col">Rôle</th>
+          <th scope="col">Actif</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let user of users">
+          <td scope="row">{{ user._id }}</td>
+          <td>{{ user.nom }}</td>
+          <td>{{ user.prenom }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <div
+              *ngIf="user.estActif; else notActif"
+              class="circle m-auto btn-success"
+              (click)="updateActif(false, user)"
+              title="Actif"
+            ></div>
+            <ng-template #notActif>
+              <div
+                class="circle m-auto btn-danger"
+                (click)="updateActif(true, user)"
+                title="Inactif"
+              ></div>
+            </ng-template>
+          </td>
+          <td class="flex justify-content-around">
+            <button
+              class="btn btn-danger"
+              (click)="onDeleteUser(user._id)"
+              title="Supprimer"
+            >
+              <i class="fas fa-minus"></i>
+            </button>
+            <a
+              [routerLink]="['/admin/user/edit', user._id]"
+              class="btn btn-warning"
+              title="Modifier"
+            >
+              <i class="fas fa-plus"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-lg-2 border-right">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+  <div class="col-lg-10">
+    <h2 class="mb-4">
+      Statistiques
+    </h2>
+    <div class="row justify-content-around mt-5">
+      <div class="card border-warning col-md-5 p-0 mt-5 shadow">
+        <div class="card-header text-center">Utilisateurs</div>
+        <div class="card-body">
+          <h5 class="card-title">
+            Nombre d'utilisateurs :
+            <span class="badge badge-info ml-5">{{ nbUsers }}</span>
+          </h5>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                <span> Actif : </span><span>{{ usersActif }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Inactif : </span> <span>{{ nbUsers - usersActif }}</span>
+              </li>
+              <li class="list-group-item"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card border-warning col-md-5 p-0 mt-5 shadow">
+        <div class="card-header text-center">Articles</div>
+        <div class="card-body">
+          <h5 class="card-title">
+            Nombres d'articles :
+            <span class="badge badge-info ml-5"> {{ nbArticles }}</span>
+          </h5>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Publié : </span><span>{{ articlesPublished }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Brouillon : </span
+                ><span>{{ nbArticles - articlesPublished }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-around">
+                <div class="text-center p-0">{{ nbGuitare }} guitares</div>
+                <div class="text-center p-0">{{ nbCordes }} cordes</div>
+                <div class="text-center p-0">{{ nbAmpli }} ampli</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<header>
+  <div class="titre flex rang">
+    <a class="nav-link" routerLink="/">
+      <h1>Guitar Sh<span class="red">o</span>p</h1>
+    </a>
+
+    <div class="recherche flex">
+      <div class="modal">
+        <form class="search" action="get">
+          <label for="search"></label>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Rechercher"
+          />
+        </form>
+      </div>
+
+      <div class="searchIcon">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <!-- routerLink="/admin"-->
+    <div *ngIf="!service.isLoggedIn()">
+      <a id="myBtn" class="login" (click)="login()">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+    <div *ngIf="service.isLoggedIn()">
+      <i class="fas fa-sign-out-alt"></i>
+    </div>
+  </div>
+</header>

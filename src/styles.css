@@ -1,0 +1,308 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+}
+.flex {
+  display: flex;
+}
+.titre {
+  justify-content: space-between;
+  padding: 0px 10px;
+  background: #0b3142;
+  color: #fff;
+  align-items: center;
+}
+.red {
+  color: #ff5733;
+}
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+main {
+  min-height: calc(100vh - 38px);
+  padding-top: 70px;
+  overflow: hidden;
+}
+.row {
+  margin: 0 !important;
+}
+@media all and (max-width: 991px) {
+  main {
+    width: 100%;
+  }
+}
+.col-xl-2,
+.col-xl-10 {
+  padding: 0 !important;
+}
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*=====SEARCH=======*/
+.recherche {
+  align-items: center;
+}
+.recherche input {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 6px;
+  width: 31rem;
+  border: none;
+}
+.searchIcon i {
+  color: #0b3142;
+  background: #fff;
+  border-radius: 0 10px 10px 0;
+  padding: 6px;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+}
+.login i {
+  font-size: 1.5em;
+}
+@media all and (max-width: 767px) {
+  #search {
+    display: none;
+  }
+  .searchIcon i {
+    border-radius: 10px;
+  }
+}
+/*======NAV=======*/
+.nav {
+  background: #13526e;
+  position: fixed;
+  top: 58px;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  text-align: center;
+  height: 39px;
+  z-index: 80;
+}
+a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  display: block;
+}
+.nav li {
+  width: 12rem;
+} /*
+.niveau1 {
+  height: 39px;
+}*/
+.nav-item {
+  margin: 0 10px;
+}
+.niveau2 {
+  background: #13526e;
+  display: none;
+}
+.niveau2 a {
+  color: #fff;
+}
+.nav a:hover {
+  background: #fff;
+  color: #13526e;
+}
+.nav button {
+  border: none;
+  color: white;
+  background: #13526e;
+  padding: 4px;
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+@media all and (max-width: 991px) {
+  main {
+    padding-top: 84px;
+  }
+  .nav,
+  .niveau1 {
+    flex-flow: column nowrap;
+  }
+  .nav {
+    align-items: center;
+    justify-content: start;
+    height: 37px;
+  }
+  .niveau1 {
+    display: none;
+    width: 100%;
+    background: #13526e;
+  }
+  .nav-item {
+    margin: auto;
+  }
+  /*
+  .niveau1 {
+    flex-direction: column;
+  }*/
+}
+@media all and (min-width: 992px) {
+  .nav button {
+    display: none;
+  }
+  .niveau1 {
+    display: flex !important;
+  }
+  .nav-item:hover .niveau2 {
+    display: block;
+  }
+}
+.content {
+  width: 85%;
+  margin: 27px auto 0;
+  flex-flow: column wrap;
+}
+/*====ACCUEIL======*/
+
+.home {
+  text-align: center;
+}
+.banniere {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+@media all and (max-width: 991px) {
+  .banniere {
+    display: none;
+  }
+}
+.trier {
+  text-align: right;
+  margin: 20px 0;
+}
+/*===ARTICLE===*/
+section {
+  margin: 50px 0;
+  text-align: center;
+}
+.conteneur {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50rem;
+  margin: 50px auto;
+}
+.conteneur article {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  width: 20rem;
+  padding: 10px;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+article p {
+  margin: 10px 0;
+}
+.contenu {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.prix {
+  color: #13526e;
+  font-size: 1.5rem;
+}
+article button {
+  background-color: #ffc300;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+}
+article button a {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.separation {
+  display: block;
+  height: 1px;
+  width: 40%;
+  background: #eee;
+  margin: auto;
+}
+article > figure {
+  height: 15rem;
+  padding: 5px;
+  margin: auto;
+  border-bottom: 1px solid #eee;
+}
+figure img {
+  width: auto;
+  max-height: 100%;
+}
+.lien:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media all and (max-width: 991px) {
+  .conteneur {
+    width: 100%;
+  }
+  .articleAccueil {
+    width: 370px;
+  }
+}
+@media all and (max-width: 767px) {
+  .articleAccueilarticle {
+    width: 49.5vw;
+    border: none;
+    font-size: 0.8em;
+  }
+}
+/*=====ArticleById====
+.articleOne {
+  height: 100%;
+  width: auto;
+}*/
+/*====PAGINATION====*/
+.pagination {
+  text-align: right;
+}
+/*===FOOTER===*/
+footer {
+  background: #185d7e;
+  color: #fff;
+  width: 100%;
+}
+footer p {
+  text-align: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*=====BOOLEAN TABLE BACK=====*/
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.circle:hover {
+  cursor: pointer;
+}
+/*==========QUILL ======*/
+.ql-container {
+  height: auto;
+}
+.ql-editor {
+  padding-left: 0;
+  padding-right: 0;
+}

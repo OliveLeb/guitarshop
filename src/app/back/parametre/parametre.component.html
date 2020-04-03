@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-lg-2 border-right">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+  <div class="col-lg-10">
+    <h2 class="mb-4">
+      Paramètre
+    </h2>
+
+    <form [formGroup]="paramForm">
+      <div class="form-group">
+        <label for="">Nombre d'article visible : </label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="nbItem"
+          min="1"
+          max="50"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for=""> balise SEO title ? meta description ? </label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="baliseSEO"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="">Texte d'intro </label>
+        <quill-editor
+          formControlName="texteIntro"
+          [modules]="quillConfigTexte"
+          required
+        ></quill-editor>
+      </div>
+      <div class="form-group">
+        <label for="">Titre accueil </label>
+        <quill-editor
+          formControlName="titreAccueil"
+          [modules]="quillConfigTitre"
+          required
+        ></quill-editor>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="paramForm.invalid"
+        *ngIf="!submitted; else updateParam"
+        (click)="onSubmit()"
+      >
+        Valider
+      </button>
+      <ng-template #updateParam>
+        <div *ngFor="let param of parametre">
+          <button class="btn btn-primary" (click)="onUpdate(param)">
+            Valider
+          </button>
+        </div>
+      </ng-template>
+    </form>
+    <br />
+    <!--{{ paramForm.value | json }}-->
+  </div>
+</div>
